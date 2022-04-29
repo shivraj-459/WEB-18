@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>login</h1>
+    <form id="bag">
+        <input id="mail_id" type="text" placeholder="Enter E-mail">
+        <input id="keyword" type="password" placeholder="Enter Password">
+        <input id="login" type="submit">
+    </form>
+
+</body>
+</html>
+
+<script>
+document.querySelector("#bag").addEventListener("submit",LoginFn);
+var DataArr=JSON.parse(localStorage.getItem("signup_data"));
+
+
+function LoginFn()
+{
+    event.preventDefault();
+  
+//    var objdata=JSON.parse(localStorage.getItem("signup_data"));
+//    var username=bag.mail_id.value;
+//    var Password=bag.keyword.value;
+
+loginObj={
+
+    username:bag.mail_id.value,
+    Password:bag.keyword.value
+}
+   console.log(loginObj)  
+   
+
+for(var i=0;i<DataArr.length;i++)
+{
+    if(loginObj.username==DataArr[i].email && loginObj.Password==DataArr[i].password)
+            {
+               alert("Login successfully");
+               return 0;
+            }
+}
+
+for(var i=0;i<DataArr.length;i++)
+{
+     if(loginObj.username==DataArr[i].email && loginObj.Password!=DataArr[i].password)
+            {
+               alert("Password Incorrect");
+               return 0;
+            }  
+     
+}
+   
+            if(loginObj.username=="" && loginObj.Password=="")
+            {
+               
+               alert("Please Fill username and password");
+               return 0;
+            }
+
+           else
+           {
+              alert("User Name is not Matching") 
+           }
+}
+
+</script>
