@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <title>DATA</title>
+   <style>
+       #container
+       {
+           display: grid;
+           margin: auto;
+           width: 90%;
+           grid-template-columns: repeat(4,1fr);
+           grid-auto-rows: 420px;
+           gap:30px;
+           margin-top: 50px;   
+       }
+
+       h1
+       {
+           text-align: center;
+           font-size: 50px;
+       }
+       #container>div{
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+           border-radius: 20px;
+           /* position: absolute; */
+       }
+
+       #container>div>img
+       {
+           width: 100%;
+           border-top-left-radius: 20px;
+           border-top-right-radius: 20px;
+       }
+       #container>div>h3{
+           text-align: center;
+           font-weight: normal;
+           font-family: 'Poppins', sans-serif;
+           font-size: 22px;  
+           margin-top: 10px; 
+        }
+
+        #container>div>p
+        {
+            text-align: center;
+            margin-top: -22px;
+            color: rgb(88, 87, 87);
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+        }
+
+        #small
+        {  
+            width: 40%;
+            height: 40px;
+            margin: auto;
+            position: relative;  
+            bottom: 2px;
+        }
+
+        #small>img
+        {
+            width: 100%;
+           
+        }
+
+   </style>
+</head>
+<body>
+    <h1>INVESTORS</h1>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    document.querySelector("#container");
+
+    var InvestorArr=JSON.parse(localStorage.getItem("data",InvestorArr));
+    console.log(InvestorArr);
+
+    InvestorArr.map(function(elem)
+    {
+
+        var diva=document.createElement("div");
+        
+        var photo=document.createElement("img");
+        photo.setAttribute("src",elem.image)
+
+        var h3=document.createElement("h3");
+        h3.innerText=elem.name;
+
+        var p=document.createElement("p");
+        p.innerText=elem.role;
+
+
+        var box=document.createElement("div");
+        box.setAttribute("id","small")
+
+        var logo=document.createElement("img");
+        logo.setAttribute("src",elem.logo);
+       
+        box.append(logo)
+        diva.append(photo,h3,p,box)
+
+        document.querySelector("#container").append(diva)
+       
+    })
+</script>

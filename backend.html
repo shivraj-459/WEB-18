@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+
+        body
+        {
+            background-color: gray;
+        }
+        h1
+        {
+            text-align: center;
+            font-size: 50px;
+            color: black;
+            margin-top: 200px;
+        }
+
+        #Backform
+        {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <h1>ADD NEW INVESTOR HERE</h1>
+    <form id="Backform">
+        <input id="personname" type="text" placeholder="Enter name here"/>
+        <input id="personUrl" type="text" placeholder="Enter Image URL here"/>
+        <input id="logoUrl" type="text" placeholder="Enter Logo URL here"/>
+        <input id="personrole" type="text" placeholder="Role of Investor"/>
+        <input type="submit">
+    </form>
+</body>
+</html>
+
+<script>
+  document.querySelector("#Backform").addEventListener("submit",myFunction);
+   
+    var InvestorArr=JSON.parse(localStorage.getItem("data",InvestorArr)) || [];
+    function myFunction()
+    {
+        event.preventDefault()
+        InvestorObj=
+        {
+            name:Backform.personname.value,
+            image:Backform.personUrl.value,
+            logo:Backform.logoUrl.value,
+            role:Backform.personrole.value
+        }
+        InvestorArr.push(InvestorObj);
+        console.log(InvestorArr);
+
+        localStorage.setItem("data",JSON.stringify(InvestorArr));
+        window.location.href="frontend.html";
+    }
+</script>
